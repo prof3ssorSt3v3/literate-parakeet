@@ -22,18 +22,47 @@ body {
   box-shadow: 0 0 4px hsl(0 0% 0% / 0.8);
   border-radius: 0.5rem;
   overflow: hidden;
+  display: grid;
+  grid-template-areas:
+    'image'
+    'title'
+    'content';
 }
-.card--image {
+.card__image {
   width: 100%;
   height: 200px;
   object-fit: cover;
-  object-position: center center;
+  object-position: center top;
+  grid-area: image; /* NO quotation marks here */
 }
-.card--title {
+.card__title {
   padding-inline: 1rem;
   margin-block: 0.5rem;
+  grid-area: title;
 }
-.card--content {
+.card__content {
   padding-inline: 1rem;
   margin-block: 0.5rem;
+  grid-area: content;
+}
+
+.card__container {
+  container-type: inline-size;
+  container-name: marco;
+}
+
+@container marco (width > 444px) {
+  /* when the container is wider than 444px then apply this CSS */
+  .card {
+    /* background-color: red; */
+    grid-template-areas:
+      'image title'
+      'image content';
+    grid-template-columns: 38cqi 62cqi;
+    grid-template-rows: 3rem 6lh;
+  }
+  .card__image {
+    /* height: auto; */
+    /* min-height: 200px; */
+  }
 }
